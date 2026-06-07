@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriNova Nutrients – Scientific Crop Nutrition</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green-900:#062310;--green-800:#0a3a1a;--green-700:#0f5626;--green-600:#157a34;--green-500:#1da045;--green-400:#3dc466;--green-300:#72dc95;--green-200:#b3f0c8;--green-100:#e0f9eb;
+  --blue-900:#030d1f;--blue-800:#071a3a;--blue-700:#0a2d5e;--blue-600:#104488;--blue-500:#1861bf;--blue-400:#3d84e0;--blue-300:#7fb4f0;--blue-200:#b8d8fa;--blue-100:#e3f0fd;
+  --gold:#d4a853;--gold-light:#f0c878;--cream:#faf7f0;
+  --text-primary:#f0f4f0;--text-secondary:#a8bfaa;--text-muted:#6b8c6e;
+  --glass-bg:rgba(10,30,15,0.6);--glass-border:rgba(29,160,69,0.2);
+  --card-bg:rgba(6,25,12,0.8);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--green-900);color:var(--text-primary);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;line-height:1.15}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--green-900)}
+::-webkit-scrollbar-thumb{background:var(--green-600);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,35,16,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(29,160,69,0.15);transition:all 0.3s}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-mark{width:40px;height:40px;background:linear-gradient(135deg,var(--green-500),var(--green-400));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:white}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-0.01em}
+.nav-logo-text span{color:var(--green-400)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.01em;transition:color 0.2s}
+.nav-links a:hover{color:var(--green-300)}
+.nav-cta{display:flex;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;border:none;letter-spacing:0.01em}
+.btn-primary{background:linear-gradient(135deg,var(--green-500),var(--green-400));color:white}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(29,160,69,0.35)}
+.btn-outline{background:transparent;color:var(--text-primary);border:1px solid rgba(29,160,69,0.4)}
+.btn-outline:hover{background:rgba(29,160,69,0.1);border-color:var(--green-400)}
+.btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid rgba(255,255,255,0.1)}
+.btn-ghost:hover{background:rgba(255,255,255,0.05);color:var(--text-primary)}
+.btn-lg{padding:14px 28px;font-size:0.95rem}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#1a0e00}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(212,168,83,0.35)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:7rem 2rem 4rem}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg-gradient{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(10,58,26,0.95) 0%,rgba(6,23,16,0.98) 60%,var(--green-900) 100%)}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(29,160,69,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(29,160,69,0.04) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite}
+@keyframes gridMove{from{background-position:0 0}to{background-position:60px 60px}}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orbFloat 8s ease-in-out infinite}
+.hero-orb-1{width:500px;height:500px;background:rgba(29,160,69,0.12);top:-100px;right:5%;animation-delay:0s}
+.hero-orb-2{width:350px;height:350px;background:rgba(16,68,136,0.15);bottom:10%;left:60%;animation-delay:3s}
+.hero-orb-3{width:250px;height:250px;background:rgba(61,196,102,0.08);top:40%;left:40%;animation-delay:5s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-30px) scale(1.05)}}
+.hero-content{position:relative;z-index:1;max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;background:rgba(29,160,69,0.12);border:1px solid rgba(29,160,69,0.3);border-radius:100px;font-size:0.78rem;font-weight:600;color:var(--green-300);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.75rem}
+.hero-badge-dot{width:8px;height:8px;background:var(--green-400);border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(61,196,102,0.4)}50%{box-shadow:0 0 0 6px rgba(61,196,102,0)}}
+.hero-h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;letter-spacing:-0.025em;line-height:1.1;margin-bottom:1.25rem}
+.hero-h1 .accent{background:linear-gradient(135deg,var(--green-400),var(--green-300));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:var(--text-secondary);font-weight:300;line-height:1.7;max-width:560px;margin-bottom:2.25rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:3rem}
+.hero-trust{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-muted);font-weight:500}
+.trust-icon{width:16px;height:16px;background:var(--green-500);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0}
+.hero-stats{position:absolute;right:4%;top:50%;transform:translateY(-50%);z-index:1;display:flex;flex-direction:column;gap:16px}
+.stat-card{background:rgba(10,30,15,0.7);border:1px solid rgba(29,160,69,0.2);border-radius:14px;padding:20px 24px;backdrop-filter:blur(20px);min-width:180px;animation:statFloat 1s ease forwards;opacity:0;transform:translateX(40px)}
+.stat-card:nth-child(1){animation-delay:0.2s}
+.stat-card:nth-child(2){animation-delay:0.35s}
+.stat-card:nth-child(3){animation-delay:0.5s}
+.stat-card:nth-child(4){animation-delay:0.65s}
+@keyframes statFloat{to{opacity:1;transform:translateX(0)}}
+.stat-num{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;color:var(--green-300);line-height:1}
+.stat-label{font-size:0.78rem;color:var(--text-muted);margin-top:4px;font-weight:400}
+
+/* SECTION BASE */
+.section{padding:6rem 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-400);margin-bottom:0.75rem}
+.section-title{font-size:clamp(2rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem}
+.section-sub{font-size:1rem;color:var(--text-secondary);max-width:580px;line-height:1.7}
+.section-header{margin-bottom:3.5rem}
+.section-header.center{text-align:center}
+.section-header.center .section-sub{margin:0 auto}
+
+/* WHY AGRINOVA */
+#why{background:linear-gradient(180deg,var(--green-900) 0%,var(--green-800) 100%)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.why-card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s;cursor:default}
+.why-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(29,160,69,0.06),transparent);opacity:0;transition:opacity 0.3s}
+.why-card:hover{border-color:rgba(29,160,69,0.4);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.why-card:hover::before{opacity:1}
+.why-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(29,160,69,0.2),rgba(61,196,102,0.1));border:1px solid rgba(29,160,69,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.5rem}
+.why-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.6rem;letter-spacing:-0.01em}
+.why-card p{font-size:0.875rem;color:var(--text-secondary);line-height:1.65}
+.why-num{position:absolute;top:1.5rem;right:1.5rem;font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:rgba(29,160,69,0.07);line-height:1}
+
+/* PRODUCTS */
+#products{background:var(--green-900)}
+.products-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem}
+.prod-tab{padding:8px 18px;border-radius:100px;font-size:0.82rem;font-weight:600;cursor:pointer;border:1px solid rgba(29,160,69,0.2);background:transparent;color:var(--text-secondary);transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.prod-tab.active,.prod-tab:hover{background:rgba(29,160,69,0.15);border-color:var(--green-500);color:var(--green-300)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.product-card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:18px;overflow:hidden;transition:all 0.3s;position:relative}
+.product-card:hover{border-color:rgba(29,160,69,0.4);transform:translateY(-5px);box-shadow:0 25px 50px rgba(0,0,0,0.35)}
+.product-img{height:180px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.product-img-bg{position:absolute;inset:0}
+.product-emoji{font-size:3.5rem;position:relative;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3))}
+.product-body{padding:1.5rem}
+.product-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-400);margin-bottom:0.5rem}
+.product-body h3{font-size:1.05rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.01em}
+.product-body p{font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem}
+.product-crops{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
+.crop-badge{font-size:0.7rem;font-weight:600;padding:3px 10px;background:rgba(29,160,69,0.1);border:1px solid rgba(29,160,69,0.2);border-radius:100px;color:var(--green-300)}
+
+/* RECOMMENDATION TOOL */
+#tool{background:linear-gradient(180deg,var(--green-900) 0%,rgba(7,26,58,0.6) 100%)}
+.tool-container{background:rgba(10,25,15,0.8);border:1px solid rgba(29,160,69,0.2);border-radius:24px;padding:3rem;backdrop-filter:blur(20px);max-width:900px;margin:0 auto}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:700px){.tool-grid{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-label{font-size:0.8rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.04em;text-transform:uppercase}
+.form-select,.form-input{background:rgba(29,160,69,0.06);border:1px solid rgba(29,160,69,0.2);border-radius:10px;padding:12px 16px;color:var(--text-primary);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;-webkit-appearance:none;width:100%}
+.form-select:focus,.form-input:focus{border-color:var(--green-500)}
+.form-select option{background:var(--green-800);color:var(--text-primary)}
+.tool-result{background:rgba(29,160,69,0.08);border:1px solid rgba(29,160,69,0.25);border-radius:16px;padding:2rem;margin-top:2rem;display:none}
+.tool-result.active{display:block;animation:fadeUp 0.4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+.result-item{background:rgba(10,30,15,0.6);border:1px solid rgba(29,160,69,0.15);border-radius:12px;padding:1.25rem;text-align:center}
+.result-val{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--green-300);line-height:1}
+.result-unit{font-size:0.75rem;color:var(--green-400);font-weight:600;margin-top:2px}
+.result-key{font-size:0.75rem;color:var(--text-muted);margin-top:6px}
+.rec-products{display:flex;flex-wrap:wrap;gap:8px;margin-top:0.5rem}
+.rec-prod{font-size:0.8rem;font-weight:600;padding:6px 14px;background:rgba(29,160,69,0.15);border:1px solid rgba(29,160,69,0.3);border-radius:8px;color:var(--green-300)}
+
+/* SOIL DASHBOARD */
+#soil{background:linear-gradient(135deg,rgba(7,26,58,0.4) 0%,var(--green-900) 100%)}
+.dashboard{background:rgba(6,20,12,0.9);border:1px solid rgba(29,160,69,0.2);border-radius:24px;padding:2.5rem;backdrop-filter:blur(20px);max-width:900px;margin:0 auto}
+.dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(29,160,69,0.12)}
+.dash-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
+.dash-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(29,160,69,0.12);border:1px solid rgba(29,160,69,0.25);border-radius:100px;font-size:0.75rem;font-weight:600;color:var(--green-300)}
+.soil-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem}
+@media(max-width:600px){.soil-metrics{grid-template-columns:repeat(2,1fr)}}
+.soil-metric{background:rgba(10,30,15,0.6);border:1px solid rgba(29,160,69,0.12);border-radius:14px;padding:1.25rem}
+.metric-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem}
+.metric-label{font-size:0.75rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.03em}
+.metric-status{font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:0.05em}
+.status-good{background:rgba(29,160,69,0.15);color:var(--green-300);border:1px solid rgba(29,160,69,0.3)}
+.status-warn{background:rgba(212,168,83,0.12);color:var(--gold-light);border:1px solid rgba(212,168,83,0.25)}
+.status-low{background:rgba(220,60,60,0.1);color:#f87171;border:1px solid rgba(220,60,60,0.25)}
+.metric-val{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;line-height:1;margin-bottom:8px}
+.progress-bar{height:6px;background:rgba(29,160,69,0.1);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width 1.5s cubic-bezier(0.4,0,0.2,1)}
+.fill-green{background:linear-gradient(90deg,var(--green-600),var(--green-400))}
+.fill-gold{background:linear-gradient(90deg,#a07030,var(--gold-light))}
+.fill-red{background:linear-gradient(90deg,#991b1b,#ef4444)}
+.soil-score{text-align:center;padding:2rem;background:linear-gradient(135deg,rgba(29,160,69,0.1),rgba(61,196,102,0.05));border:1px solid rgba(29,160,69,0.2);border-radius:16px}
+.score-ring-wrap{display:inline-block;position:relative;margin:0 auto 1rem}
+.score-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--green-300)}
+.score-label{font-size:0.85rem;color:var(--text-secondary)}
+.score-desc{font-size:0.875rem;color:var(--green-200);font-weight:500}
+.dash-bottom{display:grid;grid-template-columns:2fr 1fr;gap:1.25rem;margin-top:1.25rem}
+@media(max-width:700px){.dash-bottom{grid-template-columns:1fr}}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--green-900)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.testi-card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:18px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.testi-card:hover{border-color:rgba(29,160,69,0.35);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.testi-card::before{content:'"';position:absolute;top:-10px;right:20px;font-size:8rem;font-family:'Syne',sans-serif;color:rgba(29,160,69,0.06);font-weight:800;line-height:1}
+.testi-header{display:flex;align-items:center;gap:14px;margin-bottom:1.25rem}
+.testi-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--green-600),var(--green-400));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:white;flex-shrink:0}
+.testi-info{}
+.testi-name{font-weight:700;font-size:0.95rem}
+.testi-loc{font-size:0.78rem;color:var(--text-muted);margin-top:2px}
+.testi-crop{font-size:0.72rem;font-weight:600;color:var(--green-400);letter-spacing:0.04em;text-transform:uppercase;margin-top:4px}
+.testi-quote{font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem;font-style:italic}
+.testi-metrics{display:flex;gap:1rem}
+.testi-metric{text-align:center}
+.testi-metric-val{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--green-300)}
+.testi-metric-label{font-size:0.7rem;color:var(--text-muted);margin-top:2px}
+.stars{color:var(--gold-light);font-size:0.85rem;margin-bottom:0.75rem;letter-spacing:2px}
+
+/* DEALER MAP */
+#dealer{background:linear-gradient(180deg,var(--green-900) 0%,var(--green-800) 50%,var(--green-900) 100%)}
+.map-container{position:relative;max-width:900px;margin:0 auto}
+.india-map-wrap{background:rgba(10,25,15,0.8);border:1px solid rgba(29,160,69,0.2);border-radius:24px;padding:2.5rem;text-align:center;backdrop-filter:blur(20px)}
+.india-svg{max-width:380px;width:100%;margin:0 auto;display:block}
+.map-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+@media(max-width:600px){.map-stats{grid-template-columns:repeat(2,1fr)}}
+.map-stat{background:rgba(10,30,15,0.6);border:1px solid rgba(29,160,69,0.12);border-radius:12px;padding:1.25rem;text-align:center}
+.map-stat-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--green-300)}
+.map-stat-label{font-size:0.75rem;color:var(--text-muted);margin-top:4px}
+.pulse-dot{position:absolute;width:12px;height:12px;border-radius:50%}
+.pulse-dot::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid currentColor;animation:dotPulse 2s ease infinite}
+@keyframes dotPulse{0%,100%{opacity:0.6;transform:scale(1)}50%{opacity:0;transform:scale(1.5)}}
+
+/* KNOWLEDGE CENTER */
+#knowledge{background:var(--green-900)}
+.know-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.know-card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:16px;padding:1.75rem;transition:all 0.3s;cursor:pointer}
+.know-card:hover{border-color:rgba(29,160,69,0.35);transform:translateY(-3px)}
+.know-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.3rem}
+.know-card h3{font-size:0.95rem;font-weight:700;margin-bottom:0.4rem}
+.know-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem}
+.know-meta{display:flex;align-items:center;justify-content:space-between;font-size:0.72rem;color:var(--text-muted)}
+.know-tag{background:rgba(29,160,69,0.1);border:1px solid rgba(29,160,69,0.2);color:var(--green-400);padding:2px 8px;border-radius:100px;font-weight:600}
+
+/* LEAD FORM */
+#lead{background:linear-gradient(135deg,rgba(7,26,58,0.5) 0%,var(--green-900) 50%,rgba(10,58,26,0.7) 100%)}
+.lead-container{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start;max-width:1000px;margin:0 auto}
+@media(max-width:800px){.lead-container{grid-template-columns:1fr}}
+.lead-left{}
+.lead-benefits{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.lead-benefit{display:flex;align-items:flex-start;gap:12px}
+.lead-benefit-icon{width:36px;height:36px;background:rgba(29,160,69,0.15);border:1px solid rgba(29,160,69,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px}
+.lead-benefit-text h4{font-size:0.9rem;font-weight:600;margin-bottom:2px}
+.lead-benefit-text p{font-size:0.8rem;color:var(--text-secondary)}
+.lead-right{background:rgba(10,25,15,0.8);border:1px solid rgba(29,160,69,0.2);border-radius:24px;padding:2.5rem;backdrop-filter:blur(20px)}
+.lead-tabs{display:flex;gap:4px;background:rgba(29,160,69,0.06);border-radius:10px;padding:4px;margin-bottom:2rem}
+.lead-tab{flex:1;padding:9px;border-radius:8px;text-align:center;cursor:pointer;font-size:0.8rem;font-weight:600;transition:all 0.2s;color:var(--text-muted);border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.lead-tab.active{background:var(--green-600);color:white}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.form-actions{display:flex;flex-direction:column;gap:10px;margin-top:1.25rem}
+
+/* FOOTER */
+footer{background:var(--green-900);border-top:1px solid rgba(29,160,69,0.12);padding:4rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr}}
+.footer-brand p{font-size:0.85rem;color:var(--text-muted);margin-top:1rem;line-height:1.7;max-width:280px}
+.footer-certs{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+.cert-badge{font-size:0.7rem;font-weight:700;padding:4px 10px;background:rgba(29,160,69,0.1);border:1px solid rgba(29,160,69,0.2);border-radius:6px;color:var(--green-300);letter-spacing:0.04em}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.03em;margin-bottom:1rem;color:var(--text-primary)}
+.footer-col a{display:block;font-size:0.82rem;color:var(--text-muted);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--green-300)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid rgba(29,160,69,0.08);font-size:0.78rem;color:var(--text-muted);flex-wrap:wrap;gap:1rem}
+.social-links{display:flex;gap:10px}
+.social-link{width:34px;height:34px;border:1px solid rgba(29,160,69,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:0.85rem;transition:all 0.2s;text-decoration:none}
+.social-link:hover{background:rgba(29,160,69,0.12);border-color:var(--green-500);color:var(--green-300)}
+
+/* DIVIDER */
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(29,160,69,0.2),transparent);margin:0}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{display:none}.hero-stats{display:none}
+  .hero-content{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">AN</div>
+    <div class="nav-logo-text">AgriNova <span>Nutrients</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#why">Why Us</a>
+    <a href="#products">Products</a>
+    <a href="#tool">Recommend</a>
+    <a href="#soil">Soil IQ</a>
+    <a href="#testimonials">Stories</a>
+    <a href="#dealer">Dealers</a>
+    <a href="#lead">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#dealer" class="btn btn-ghost" style="padding:8px 16px;font-size:0.82rem">Dealer Login</a>
+    <a href="#lead" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
+  <div class="section-inner" style="position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Next-Generation Crop Nutrition
+      </div>
+      <h1 class="hero-h1">
+        Scientific Crop Nutrition.<br>
+        <span class="accent">Higher Yields.</span><br>
+        Healthier Soils.
+      </h1>
+      <p class="hero-sub">Helping farmers maximize productivity using advanced fertilizers, micronutrients, bio-stimulants, and precision crop nutrition programs trusted across 20 states.</p>
+      <div class="hero-cta">
+        <a href="#lead" class="btn btn-primary btn-lg">Request Agronomist Call</a>
+        <a href="#products" class="btn btn-gold btn-lg">Product Catalog</a>
+        <a href="#lead" class="btn btn-outline btn-lg">Become a Dealer</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <div class="trust-icon" style="background:var(--green-500)">✓</div>
+          ISO 9001:2015 Certified
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" style="background:var(--blue-500)">✓</div>
+          FCO Approved Products
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" style="background:var(--gold)">✓</div>
+          APEDA Recognized
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">500K+</div>
+      <div class="stat-label">Acres Nourished</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">50K+</div>
+      <div class="stat-label">Farmers Served</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">120+</div>
+      <div class="stat-label">Distributors</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">States Covered</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHY -->
+<section id="why" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-tag">Why AgriNova</div>
+      <h2 class="section-title">Why 50,000+ Farmers<br>Choose AgriNova</h2>
+      <p class="section-sub">Backed by science, trusted by farmers — our precision nutrition programs deliver results that generic fertilizers simply cannot match.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <div class="why-icon">🌾</div>
+        <h3>Higher Yield Potential</h3>
+        <p>Our precision nutrient formulations are engineered to unlock your crop's full genetic potential — delivering up to 30–40% higher yields compared to conventional fertilizers.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.1s">
+        <div class="why-num">02</div>
+        <div class="why-icon">🧬</div>
+        <h3>Better Nutrient Absorption</h3>
+        <p>Chelated micronutrients and advanced carriers ensure maximum uptake efficiency. Less leaching, more in the plant — every gram counts in your field.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.15s">
+        <div class="why-num">03</div>
+        <div class="why-icon">🌱</div>
+        <h3>Improved Soil Health</h3>
+        <p>Organic bio-stimulants and humic acids rebuild soil microbial life, improve structure, and create a thriving rhizosphere season after season.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.2s">
+        <div class="why-num">04</div>
+        <div class="why-icon">💡</div>
+        <h3>Reduced Input Waste</h3>
+        <p>Slow-release and nano-encapsulated formulations cut fertilizer usage by up to 25% while maintaining or improving yields — reducing cost and environmental impact.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.25s">
+        <div class="why-num">05</div>
+        <div class="why-icon">👨‍🔬</div>
+        <h3>Expert Agronomy Support</h3>
+        <p>A dedicated team of 200+ agronomists available 7 days a week for field visits, soil testing interpretation, and real-time crop nutrition advice.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.3s">
+        <div class="why-num">06</div>
+        <div class="why-icon">♻️</div>
+        <h3>Sustainable Farming Practices</h3>
+        <p>Our responsible formulations are built for the long-term — protecting waterways, biodiversity, and soil carbon levels while maintaining high productivity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PRODUCTS -->
+<section id="products" class="section">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <div class="section-tag">Product Portfolio</div>
+      <h2 class="section-title">Complete Crop Nutrition Solutions</h2>
+      <p class="section-sub">From seedling to harvest — every nutrient your crop needs, formulated for Indian soils and climate.</p>
+    </div>
+    <div class="products-tabs reveal">
+      <button class="prod-tab active">All Products</button>
+      <button class="prod-tab">NPK Fertilizers</button>
+      <button class="prod-tab">Water Soluble</button>
+      <button class="prod-tab">Micronutrients</button>
+      <button class="prod-tab">Bio-Stimulants</button>
+      <button class="prod-tab">Organic</button>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-img">
+          <div class="product-img-bg" style="background:linear-gradient(135deg,rgba(21,122,52,0.3),rgba(10,58,26,0.8))"></div>
+          <span class="product-emoji">🌿</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tag">NPK Fertilizers</div>
+          <h3>AgriNova GrowMax NPK</h3>
+          <p>Balanced 19:19:19 water-dispersible granules with secondary nutrients for fast canopy development and vigorous root establishment.</p>
+          <div class="product-crops">
+            <span class="crop-badge">Wheat</span>
+            <span class="crop-badge">Paddy</span>
+            <span class="crop-badge">Soybean</span>
+            <span class="crop-badge">Sugarcane</span>
+          </div>
+          <a href="#lead" class="btn btn-outline" style="width:100%;justify-content:center">Enquire Now</a>
+        </div>
+      </div>
+      <div class="product-card reveal" style="transition-delay:0.1s">
+        <div class="product-img">
+          <div class="product-img-bg" style="background:linear-gradient(135deg,rgba(16,68,136,0.35),rgba(7,26,58,0.8))"></div>
+          <span class="product-emoji">💧</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Water Soluble</div>
+          <h3>SoluNova WSF Range</h3>
+          <p>100% water-soluble powders formulated for drip and foliar application. Zero residue, instant availability, maximum precision.</p>
+          <div class="product-crops">
+            <span class="crop-badge">Tomato</span>
+            <span class="crop-badge">Chilli</span>
+            <span class="crop-badge">Grapes</span>
+            <span class="crop-badge">Banana</span>
+          </div>
+          <a href="#lead" class="btn btn-outline" style="width:100%;justify-content:center">Enquire Now</a>
+        </div>
+      </div>
+      <div class="product-card reveal" style="transition-delay:0.15s">
+        <div class="product-img">
+          <div class="product-img-bg" style="background:linear-gradient(135deg,rgba(212,168,83,0.25),rgba(26,14,0,0.8))"></div>
+          <span class="product-emoji">⚗️</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Micronutrients</div>
+          <h3>MicroShield Chelated Mix</h3>
+          <p>EDTA-chelated Zinc, Boron, Iron, Manganese and Copper blend targeting hidden hunger and deficiency symptoms at critical growth stages.</p>
+          <div class="product-crops">
+            <span class="crop-badge">Cotton</span>
+            <span class="crop-badge">Maize</span>
+            <span class="crop-badge">Groundnut</span>
+          </div>
+          <a href="#lead" class="btn btn-outline" style="width:100%;justify-content:center">Enquire Now</a>
+        </div>
+      </div>
+      <div class="product-card reveal" style="transition-delay:0.2s">
+        <div class="product-img">
+          <div class="product-img-bg" style="background:linear-gradient(135deg,rgba(29,160,69,0.25),rgba(6,23,16,0.85))"></div>
+          <span class="product-emoji">🦠</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Bio-Stimulants</div>
+          <h3>BioActiv RootBoost</h3>
+          <p>Seaweed extract + humic acid + amino acid blend scientifically proven to improve root architecture, stress tolerance, and nutrient uptake by 40%.</p>
+          <div class="product-crops">
+            <span class="crop-badge">All crops</span>
+            <span class="crop-badge">Vegetables</span>
+            <span class="crop-badge">Fruits</span>
+          </div>
+          <a href="#lead" class="btn btn-outline" style="width:100%;justify-content:center">Enquire Now</a>
+        </div>
+      </div>
+      <div class="product-card reveal" style="transition-delay:0.25s">
+        <div class="product-img">
+          <div class="product-img-bg" style="background:linear-gradient(135deg,rgba(61,120,17,0.3),rgba(6,23,16,0.85))"></div>
+          <span class="product-emoji">🌾</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Organic Nutrition</div>
+          <h3>TerraOrganic Gold</h3>
+          <p>Rich granular organic fertilizer from vermicompost and neem cake fortified with beneficial microbes — builds long-term soil fertility naturally.</p>
+          <div class="product-crops">
+            <span class="crop-badge">Organic farms</span>
+            <span class="crop-badge">Export crops</span>
+          </div>
+          <a href="#lead" class="btn btn-outline" style="width:100%;justify-content:center">Enquire Now</a>
+        </div>
+      </div>
+      <div class="product-card reveal" style="transition-delay:0.3s">
+        <div class="product-img">
+          <div class="product-img-bg" style="background:linear-gradient(135deg,rgba(153,60,29,0.25),rgba(26,14,0,0.85))"></div>
+          <span class="product-emoji">🍇</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tag">Specialty Crops</div>
+          <h3>SpeciaNova Horticulture</h3>
+          <p>Custom nutrition programs for high-value fruits and vegetables — grapes, pomegranate, mango, and floriculture with stage-specific formulations.</p>
+          <div class="product-crops">
+            <span class="crop-badge">Grapes</span>
+            <span class="crop-badge">Pomegranate</span>
+            <span class="crop-badge">Mango</span>
+          </div>
+          <a href="#lead" class="btn btn-outline" style="width:100%;justify-content:center">Enquire Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- RECOMMENDATION TOOL -->
+<section id="tool" class="section">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <div class="section-tag">Smart Tool</div>
+      <h2 class="section-title">Fertilizer Recommendation Engine</h2>
+      <p class="section-sub">Tell us about your farm. Our AI-powered nutrition engine recommends the perfect product program for your crop and soil.</p>
+    </div>
+    <div class="tool-container reveal">
+      <div class="tool-grid">
+        <div class="form-group">
+          <label class="form-label">Crop Type</label>
+          <select class="form-select" id="rec-crop">
+            <option value="">Select Crop</option>
+            <option value="wheat">Wheat</option>
+            <option value="paddy">Paddy / Rice</option>
+            <option value="cotton">Cotton</option>
+            <option value="soybean">Soybean</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="tomato">Tomato</option>
+            <option value="chilli">Chilli</option>
+            <option value="grapes">Grapes</option>
+            <option value="maize">Maize</option>
+            <option value="groundnut">Groundnut</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Soil Type</label>
+          <select class="form-select" id="rec-soil">
+            <option value="">Select Soil</option>
+            <option value="black">Black Cotton Soil</option>
+            <option value="red">Red Laterite Soil</option>
+            <option value="alluvial">Alluvial Soil</option>
+            <option value="sandy">Sandy Soil</option>
+            <option value="clay">Clay Soil</option>
+            <option value="loam">Sandy Loam</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Farm Size (Acres)</label>
+          <input type="number" class="form-input" id="rec-size" placeholder="e.g. 5" min="0.5" max="500">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Growth Stage</label>
+          <select class="form-select" id="rec-stage">
+            <option value="">Select Stage</option>
+            <option value="pre">Pre-Sowing / Land Prep</option>
+            <option value="veg">Vegetative Stage</option>
+            <option value="flower">Flowering Stage</option>
+            <option value="fruit">Fruiting / Grain Filling</option>
+            <option value="post">Post-Harvest</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:1.75rem;text-align:center">
+        <button class="btn btn-primary btn-lg" onclick="generateRecommendation()" style="min-width:220px">
+          ⚡ Generate Recommendation
+        </button>
+      </div>
+      <div class="tool-result" id="tool-result">
+        <div style="margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem">
+          <div>
+            <div class="section-tag" style="margin:0">Personalized Program</div>
+            <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-top:4px" id="result-title">Nutrition Program</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap" id="rec-products-wrap">
+          </div>
+        </div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-val" id="res-qty">—</div>
+            <div class="result-unit">kg/acre</div>
+            <div class="result-key">Recommended Quantity</div>
+          </div>
+          <div class="result-item">
+            <div class="result-val" id="res-yield">—</div>
+            <div class="result-unit">% improvement</div>
+            <div class="result-key">Expected Yield Gain</div>
+          </div>
+          <div class="result-item">
+            <div class="result-val" id="res-cost">—</div>
+            <div class="result-unit">₹ estimated</div>
+            <div class="result-key">Total Input Cost</div>
+          </div>
+          <div class="result-item">
+            <div class="result-val" id="res-roi">—</div>
+            <div class="result-unit">₹ extra revenue</div>
+            <div class="result-key">Expected ROI</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:1.25rem;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <a href="#lead" class="btn btn-primary">Request Expert Consultation</a>
+          <a href="#lead" class="btn btn-ghost">Download Full Program PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SOIL DASHBOARD -->
+<section id="soil" class="section">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <div class="section-tag">Soil Intelligence</div>
+      <h2 class="section-title">Soil Health Intelligence Dashboard</h2>
+      <p class="section-sub">Real-time soil nutrient monitoring powered by lab-verified field data and IoT sensors across our partner farms.</p>
+    </div>
+    <div class="dashboard reveal">
+      <div class="dash-header">
+        <div class="dash-title">📍 Sample Farm — Nashik, Maharashtra</div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div class="dash-badge"><span style="color:var(--green-400)">●</span> Live Data</div>
+          <div style="font-size:0.75rem;color:var(--text-muted)">Last updated: 2 hrs ago</div>
+        </div>
+      </div>
+      <div class="soil-metrics">
+        <div class="soil-metric">
+          <div class="metric-head">
+            <div class="metric-label">Nitrogen (N)</div>
+            <div class="metric-status status-warn">Moderate</div>
+          </div>
+          <div class="metric-val" style="color:var(--gold-light)">148 kg/ha</div>
+          <div class="progress-bar"><div class="progress-fill fill-gold" style="width:58%" id="n-bar"></div></div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:5px">Optimal: 200–280 kg/ha</div>
+        </div>
+        <div class="soil-metric">
+          <div class="metric-head">
+            <div class="metric-label">Phosphorus (P)</div>
+            <div class="metric-status status-good">Optimal</div>
+          </div>
+          <div class="metric-val" style="color:var(--green-300)">52 kg/ha</div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:78%" id="p-bar"></div></div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:5px">Optimal: 40–60 kg/ha</div>
+        </div>
+        <div class="soil-metric">
+          <div class="metric-head">
+            <div class="metric-label">Potassium (K)</div>
+            <div class="metric-status status-good">Optimal</div>
+          </div>
+          <div class="metric-val" style="color:var(--green-300)">185 kg/ha</div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:82%" id="k-bar"></div></div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:5px">Optimal: 150–220 kg/ha</div>
+        </div>
+        <div class="soil-metric">
+          <div class="metric-head">
+            <div class="metric-label">Organic Carbon</div>
+            <div class="metric-status status-low">Low</div>
+          </div>
+          <div class="metric-val" style="color:#f87171">0.38%</div>
+          <div class="progress-bar"><div class="progress-fill fill-red" style="width:28%" id="oc-bar"></div></div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:5px">Optimal: 0.75–1.5%</div>
+        </div>
+        <div class="soil-metric">
+          <div class="metric-head">
+            <div class="metric-label">Soil pH</div>
+            <div class="metric-status status-good">Good</div>
+          </div>
+          <div class="metric-val" style="color:var(--green-300)">7.2</div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:72%" id="ph-bar"></div></div>
+          <div style="font-size:0.7rem;color:var(--text-muted);margin-top:5px">Optimal: 6.5–7.5</div>
+        </div>
+        <div class="soil-metric" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(29,160,69,0.1),rgba(61,196,102,0.05));border-color:rgba(29,160,69,0.2)">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:8px;letter-spacing:0.03em">SOIL HEALTH SCORE</div>
+          <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--green-300);line-height:1">72</div>
+          <div style="font-size:0.75rem;color:var(--green-400);font-weight:600;margin-top:4px">out of 100</div>
+          <div style="margin-top:10px;display:flex;gap:3px">
+            <div style="width:24px;height:6px;border-radius:3px;background:var(--green-500)"></div>
+            <div style="width:24px;height:6px;border-radius:3px;background:var(--green-500)"></div>
+            <div style="width:24px;height:6px;border-radius:3px;background:var(--green-500)"></div>
+            <div style="width:24px;height:6px;border-radius:3px;background:var(--gold)"></div>
+            <div style="width:24px;height:6px;border-radius:3px;background:rgba(255,255,255,0.1)"></div>
+          </div>
+          <div style="font-size:0.72rem;color:var(--text-muted);margin-top:8px">Good — Improvement Possible</div>
+        </div>
+      </div>
+      <div style="background:rgba(29,160,69,0.07);border:1px solid rgba(29,160,69,0.15);border-radius:12px;padding:1.25rem;margin-top:0.75rem">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--green-300);margin-bottom:0.5rem">🧪 AgriNova Recommendation</div>
+        <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.65">Based on this soil profile, we recommend <strong style="color:var(--text-primary)">TerraOrganic Gold</strong> at 200 kg/acre to boost organic carbon, combined with <strong style="color:var(--text-primary)">AgriNova N-Boost</strong> foliar spray at tillering stage to address Nitrogen deficiency. Expected soil health score improvement: +12 points over 1 season.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <div class="section-tag">Success Stories</div>
+      <h2 class="section-title">Farmers Who Transformed Their Fields</h2>
+      <p class="section-sub">Real results from real farms — across diverse crops, soils, and climatic zones of India.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="testi-header">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#0f5626,#3dc466)">RS</div>
+          <div class="testi-info">
+            <div class="testi-name">Rajendra Singh Bhadoria</div>
+            <div class="testi-loc">📍 Vidisha, Madhya Pradesh</div>
+            <div class="testi-crop">Wheat · 18 Acres</div>
+          </div>
+        </div>
+        <p class="testi-quote">"AgriNova's soil-specific NPK program and their agronomist's visit changed how I look at fertilizers. No more guesswork — I know exactly what my soil needs and when."</p>
+        <div class="testi-metrics">
+          <div class="testi-metric">
+            <div class="testi-metric-val">+38%</div>
+            <div class="testi-metric-label">Yield Gain</div>
+          </div>
+          <div class="testi-metric">
+            <div class="testi-metric-val">+₹1.8L</div>
+            <div class="testi-metric-label">Extra Revenue</div>
+          </div>
+          <div class="testi-metric">
+            <div class="testi-metric-val">2nd Year</div>
+            <div class="testi-metric-label">AgriNova User</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.1s">
+        <div class="stars">★★★★★</div>
+        <div class="testi-header">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#104488,#3d84e0)">SP</div>
+          <div class="testi-info">
+            <div class="testi-name">Sunita Patil</div>
+            <div class="testi-loc">📍 Sangli, Maharashtra</div>
+            <div class="testi-crop">Grapes · 8 Acres</div>
+          </div>
+        </div>
+        <p class="testi-quote">"The SpeciaNova Horticulture program for grapes gave me export-quality clusters this season. The fruit size, color, and Brix value all improved significantly. International buyers noticed!"</p>
+        <div class="testi-metrics">
+          <div class="testi-metric">
+            <div class="testi-metric-val">+45%</div>
+            <div class="testi-metric-label">Yield Gain</div>
+          </div>
+          <div class="testi-metric">
+            <div class="testi-metric-val">+₹4.2L</div>
+            <div class="testi-metric-label">Extra Revenue</div>
+          </div>
+          <div class="testi-metric">
+            <div class="testi-metric-val">Export</div>
+            <div class="testi-metric-label">Quality Achieved</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.2s">
+        <div class="stars">★★★★★</div>
+        <div class="testi-header">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#854f0b,#ef9f27)">MR</div>
+          <div class="testi-info">
+            <div class="testi-name">Murugesan Rajan</div>
+            <div class="testi-loc">📍 Coimbatore, Tamil Nadu</div>
+            <div class="testi-crop">Cotton · 25 Acres</div>
+          </div>
+        </div>
+        <p class="testi-quote">"MicroShield addressed the micronutrient deficiency that I had struggled with for 3 seasons. The boll count per plant doubled and I saw near-zero shedding. Worth every rupee."</p>
+        <div class="testi-metrics">
+          <div class="testi-metric">
+            <div class="testi-metric-val">+31%</div>
+            <div class="testi-metric-label">Yield Gain</div>
+          </div>
+          <div class="testi-metric">
+            <div class="testi-metric-val">+₹3.5L</div>
+            <div class="testi-metric-label">Extra Revenue</div>
+          </div>
+          <div class="testi-metric">
+            <div class="testi-metric-val">3rd Year</div>
+            <div class="testi-metric-label">AgriNova User</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#" class="btn btn-ghost btn-lg">View All Success Stories →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- DEALER MAP -->
+<section id="dealer" class="section">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <div class="section-tag">Distribution Network</div>
+      <h2 class="section-title">Pan-India Dealer &amp; Distributor Network</h2>
+      <p class="section-sub">500+ dealer touchpoints across 20 states ensuring last-mile availability in every district.</p>
+    </div>
+    <div class="map-container reveal">
+      <div class="india-map-wrap">
+        <svg class="india-svg" viewBox="0 0 350 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Simplified India shape -->
+          <path d="M120,30 L140,25 L165,28 L185,22 L210,30 L225,45 L235,60 L240,80 L245,100 L250,120 L255,140 L248,160 L245,180 L250,200 L245,220 L238,240 L228,260 L215,280 L205,295 L195,310 L185,330 L180,350 L175,365 L172,375 L168,365 L162,350 L155,335 L148,315 L140,300 L130,285 L118,265 L108,245 L100,225 L92,205 L85,185 L80,165 L75,145 L78,125 L80,105 L82,85 L88,65 L100,48 Z" fill="rgba(15,86,38,0.5)" stroke="rgba(29,160,69,0.4)" stroke-width="1.5"/>
+          <!-- J&K peninsula top -->
+          <path d="M120,30 L110,20 L100,15 L95,25 L100,35 L110,38 L120,30" fill="rgba(15,86,38,0.4)" stroke="rgba(29,160,69,0.3)" stroke-width="1"/>
+          <!-- NE states -->
+          <path d="M245,100 L260,90 L275,95 L280,110 L270,120 L258,115 L250,120 L245,100" fill="rgba(15,86,38,0.4)" stroke="rgba(29,160,69,0.3)" stroke-width="1"/>
+          <!-- Dots for dealer locations -->
+          <circle cx="175" cy="120" r="5" fill="#1da045" opacity="0.9" filter="url(#glow)"/>
+          <circle cx="148" cy="160" r="4" fill="#3dc466" opacity="0.8"/>
+          <circle cx="200" cy="150" r="5" fill="#1da045" opacity="0.9" filter="url(#glow)"/>
+          <circle cx="130" cy="200" r="4" fill="#3dc466" opacity="0.8"/>
+          <circle cx="185" cy="220" r="6" fill="#72dc95" opacity="0.9" filter="url(#glow)"/>
+          <circle cx="155" cy="260" r="4" fill="#3dc466" opacity="0.8"/>
+          <circle cx="115" cy="240" r="3" fill="#1da045" opacity="0.7"/>
+          <circle cx="220" cy="195" r="5" fill="#1da045" opacity="0.9" filter="url(#glow)"/>
+          <circle cx="100" cy="170" r="4" fill="#3dc466" opacity="0.75"/>
+          <circle cx="170" cy="285" r="4" fill="#3dc466" opacity="0.8"/>
+          <circle cx="200" cy="260" r="3" fill="#1da045" opacity="0.7"/>
+          <circle cx="135" cy="130" r="4" fill="#3dc466" opacity="0.8"/>
+          <!-- Pulses -->
+          <circle cx="185" cy="220" r="10" fill="none" stroke="#3dc466" stroke-width="1" opacity="0.5">
+            <animate attributeName="r" from="6" to="18" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.6" to="0" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="175" cy="120" r="8" fill="none" stroke="#1da045" stroke-width="1" opacity="0.5">
+            <animate attributeName="r" from="5" to="15" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.6" to="0" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="200" cy="150" r="8" fill="none" stroke="#1da045" stroke-width="1" opacity="0.5">
+            <animate attributeName="r" from="5" to="15" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.6" to="0" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Warehouse triangles -->
+          <polygon points="200,195 195,210 205,210" fill="var(--gold)" opacity="0.9"/>
+          <polygon points="155,140 150,155 160,155" fill="var(--gold)" opacity="0.9"/>
+          <!-- Labels -->
+          <text x="175" y="108" font-size="7" fill="#72dc95" text-anchor="middle" font-family="DM Sans,sans-serif">Delhi NCR</text>
+          <text x="205" y="142" font-size="7" fill="#72dc95" text-anchor="middle" font-family="DM Sans,sans-serif">UP</text>
+          <text x="190" y="235" font-size="7" fill="#72dc95" text-anchor="middle" font-family="DM Sans,sans-serif">Maharashtra</text>
+          <text x="222" y="190" font-size="7" fill="#72dc95" text-anchor="middle" font-family="DM Sans,sans-serif">Odisha</text>
+        </svg>
+        <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem;font-size:0.75rem">
+          <span style="display:flex;align-items:center;gap:6px;color:var(--text-secondary)"><span style="width:10px;height:10px;border-radius:50%;background:var(--green-400);display:inline-block"></span>Dealers</span>
+          <span style="display:flex;align-items:center;gap:6px;color:var(--text-secondary)"><span style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:9px solid var(--gold);display:inline-block"></span>Warehouses</span>
+          <span style="display:flex;align-items:center;gap:6px;color:var(--text-secondary)"><span style="width:10px;height:10px;border-radius:50%;background:#72dc95;display:inline-block"></span>Distributors</span>
+        </div>
+        <div class="map-stats">
+          <div class="map-stat">
+            <div class="map-stat-num">500+</div>
+            <div class="map-stat-label">Active Dealers</div>
+          </div>
+          <div class="map-stat">
+            <div class="map-stat-num">120+</div>
+            <div class="map-stat-label">Distributors</div>
+          </div>
+          <div class="map-stat">
+            <div class="map-stat-num">18</div>
+            <div class="map-stat-label">Warehouses</div>
+          </div>
+          <div class="map-stat">
+            <div class="map-stat-num">20+</div>
+            <div class="map-stat-label">States</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <a href="#lead" class="btn btn-primary">Become a Dealer</a>
+          <a href="#lead" class="btn btn-ghost">Find Nearest Dealer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- KNOWLEDGE CENTER -->
+<section id="knowledge" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-tag">Knowledge Center</div>
+      <h2 class="section-title">Crop Nutrition Knowledge Hub</h2>
+      <p class="section-sub">Practical, science-backed resources to help you make smarter decisions in the field.</p>
+    </div>
+    <div class="know-grid">
+      <div class="know-card reveal">
+        <div class="know-icon" style="background:rgba(29,160,69,0.12);border:1px solid rgba(29,160,69,0.2)">📖</div>
+        <h3>Complete Fertilizer Application Guide</h3>
+        <p>Step-by-step basal and top-dressing schedules for 20 major crops — timing, dose, method, and product selection.</p>
+        <div class="know-meta">
+          <span class="know-tag">Guide</span>
+          <span>8 min read</span>
+        </div>
+      </div>
+      <div class="know-card reveal" style="transition-delay:0.08s">
+        <div class="know-icon" style="background:rgba(212,168,83,0.1);border:1px solid rgba(212,168,83,0.2)">🌿</div>
+        <h3>Identifying Nutrient Deficiency Symptoms</h3>
+        <p>Visual guide to recognizing N, P, K and micronutrient deficiencies in leaves, stems and fruit — with corrective measures.</p>
+        <div class="know-meta">
+          <span class="know-tag">Diagnostic</span>
+          <span>6 min read</span>
+        </div>
+      </div>
+      <div class="know-card reveal" style="transition-delay:0.16s">
+        <div class="know-icon" style="background:rgba(16,68,136,0.15);border:1px solid rgba(16,68,136,0.25)">🌧️</div>
+        <h3>Kharif Season Nutrition Strategy 2025</h3>
+        <p>Pre-monsoon soil preparation, early-kharif basal program, and mid-season top-up recommendations for high-yield kharif crops.</p>
+        <div class="know-meta">
+          <span class="know-tag">Seasonal</span>
+          <span>5 min read</span>
+        </div>
+      </div>
+      <div class="know-card reveal" style="transition-delay:0.24s">
+        <div class="know-icon" style="background:rgba(61,196,102,0.1);border:1px solid rgba(61,196,102,0.2)">🧪</div>
+        <h3>Soil Testing: How to Sample & Interpret</h3>
+        <p>Why soil testing is the most important first step, how to correctly collect samples, and what your report numbers actually mean.</p>
+        <div class="know-meta">
+          <span class="know-tag">Science</span>
+          <span>7 min read</span>
+        </div>
+      </div>
+      <div class="know-card reveal" style="transition-delay:0.32s">
+        <div class="know-icon" style="background:rgba(29,160,69,0.12);border:1px solid rgba(29,160,69,0.2)">📡</div>
+        <h3>Fertigation Best Practices for Drip Irrigated Crops</h3>
+        <p>Compatibility charts, EC/pH monitoring, fertigation scheduling, and product mixing guides for drip-based nutrition delivery.</p>
+        <div class="know-meta">
+          <span class="know-tag">Advanced</span>
+          <span>9 min read</span>
+        </div>
+      </div>
+      <div class="know-card reveal" style="transition-delay:0.4s">
+        <div class="know-icon" style="background:rgba(153,60,29,0.1);border:1px solid rgba(153,60,29,0.2)">🏆</div>
+        <h3>High-Value Crop Premium Program Guide</h3>
+        <p>Specialized nutrition calendars for grapes, pomegranate, banana, and floriculture targeting export quality standards.</p>
+        <div class="know-meta">
+          <span class="know-tag">Premium</span>
+          <span>10 min read</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#" class="btn btn-outline btn-lg">Browse All Resources →</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- LEAD FORM -->
+<section id="lead" class="section">
+  <div class="section-inner">
+    <div class="lead-container">
+      <div class="lead-left reveal">
+        <div class="section-tag">Connect With Us</div>
+        <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.5rem)">Start Your Precision Nutrition Journey</h2>
+        <p class="section-sub">Talk to an expert agronomist, request a product demonstration, or become part of India's fastest-growing crop nutrition network.</p>
+        <div class="lead-benefits">
+          <div class="lead-benefit">
+            <div class="lead-benefit-icon">📞</div>
+            <div class="lead-benefit-text">
+              <h4>Free Agronomist Consultation</h4>
+              <p>Schedule a field visit or phone call with our crop nutrition specialists — 100% free, no obligation.</p>
+            </div>
+          </div>
+          <div class="lead-benefit">
+            <div class="lead-benefit-icon">📄</div>
+            <div class="lead-benefit-text">
+              <h4>Product Catalog Download</h4>
+              <p>Complete catalog with technical specifications, dosage charts, and pricing for all 60+ products.</p>
+            </div>
+          </div>
+          <div class="lead-benefit">
+            <div class="lead-benefit-icon">🤝</div>
+            <div class="lead-benefit-text">
+              <h4>Dealer Partnership</h4>
+              <p>High-margin dealership opportunity with exclusive territory, training, and backend support.</p>
+            </div>
+          </div>
+          <div class="lead-benefit">
+            <div class="lead-benefit-icon">🧪</div>
+            <div class="lead-benefit-text">
+              <h4>Free Soil Test</h4>
+              <p>Get a certified soil test report with 12 parameters done at our partner labs — worth ₹800, free for new enquiries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lead-right reveal" style="transition-delay:0.2s">
+        <div class="lead-tabs">
+          <button class="lead-tab active" onclick="switchTab(this,'farmer')">For Farmers</button>
+          <button class="lead-tab" onclick="switchTab(this,'dealer')">Become Dealer</button>
+          <button class="lead-tab" onclick="switchTab(this,'fpo')">FPO / B2B</button>
+        </div>
+        <div id="tab-content">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number</label>
+              <input type="tel" class="form-input" placeholder="+91 XXXXX XXXXX">
+            </div>
+          </div>
+          <div class="form-row" style="margin-top:12px">
+            <div class="form-group">
+              <label class="form-label">State</label>
+              <select class="form-select">
+                <option value="">Select State</option>
+                <option>Maharashtra</option><option>Madhya Pradesh</option><option>Uttar Pradesh</option><option>Gujarat</option><option>Punjab</option><option>Haryana</option><option>Rajasthan</option><option>Telangana</option><option>Andhra Pradesh</option><option>Karnataka</option><option>Tamil Nadu</option><option>West Bengal</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">District</label>
+              <input type="text" class="form-input" placeholder="Your district">
+            </div>
+          </div>
+          <div class="form-row" style="margin-top:12px">
+            <div class="form-group">
+              <label class="form-label">Primary Crop</label>
+              <select class="form-select">
+                <option value="">Select Crop</option>
+                <option>Wheat</option><option>Paddy</option><option>Cotton</option><option>Soybean</option><option>Sugarcane</option><option>Vegetables</option><option>Fruits</option><option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Farm Size (Acres)</label>
+              <input type="number" class="form-input" placeholder="e.g. 10">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary btn-lg" style="justify-content:center">📞 Request Agronomist Call</button>
+            <button class="btn btn-gold" style="justify-content:center;padding:12px 20px">📄 Download Product Catalog</button>
+            <button class="btn btn-outline" style="justify-content:center">🤝 Become a Dealer Partner</button>
+          </div>
+          <p style="text-align:center;font-size:0.72rem;color:var(--text-muted);margin-top:1rem">🔒 Your information is secure and will never be shared with third parties.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:0.75rem">
+          <div class="nav-logo-mark">AN</div>
+          <div class="nav-logo-text">AgriNova <span>Nutrients</span></div>
+        </div>
+        <p>India's trusted next-generation crop nutrition company — empowering farmers with science-backed fertilizers, micronutrients, and precision nutrition programs for a sustainable and profitable agriculture.</p>
+        <div class="footer-certs">
+          <span class="cert-badge">ISO 9001:2015</span>
+          <span class="cert-badge">FCO Approved</span>
+          <span class="cert-badge">APEDA</span>
+          <span class="cert-badge">BIS Certified</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#">NPK Fertilizers</a>
+        <a href="#">Water Soluble</a>
+        <a href="#">Micronutrients</a>
+        <a href="#">Bio-Stimulants</a>
+        <a href="#">Organic Range</a>
+        <a href="#">Specialty Crops</a>
+      </div>
+      <div class="footer-col">
+        <h4>Farmers</h4>
+        <a href="#">Crop Advisor Tool</a>
+        <a href="#">Soil Testing</a>
+        <a href="#">Knowledge Center</a>
+        <a href="#">Agronomy Support</a>
+        <a href="#">Success Stories</a>
+        <a href="#">App Download</a>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <a href="#">Dealer Portal</a>
+        <a href="#">Distributor Login</a>
+        <a href="#">Become a Dealer</a>
+        <a href="#">FPO / B2B</a>
+        <a href="#">Export Enquiry</a>
+        <a href="#">Corporate Sales</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About AgriNova</a>
+        <a href="#">Our Research</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Careers</a>
+        <a href="#">Press & Media</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <div style="margin-bottom:6px">📍 AgriNova Nutrients Pvt. Ltd. — Pune, Maharashtra 411001</div>
+        <div>📞 1800-XXX-XXXX (Toll-Free) &nbsp;|&nbsp; ✉️ support@agrinova.in</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+        <div class="social-links">
+          <a href="#" class="social-link" title="Facebook">f</a>
+          <a href="#" class="social-link" title="Twitter">𝕏</a>
+          <a href="#" class="social-link" title="LinkedIn">in</a>
+          <a href="#" class="social-link" title="YouTube">▶</a>
+          <a href="#" class="social-link" title="Instagram">◎</a>
+        </div>
+        <div>© 2025 AgriNova Nutrients Pvt. Ltd. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  if (window.scrollY > 50) { nav.style.background = 'rgba(4,20,10,0.95)'; }
+  else { nav.style.background = 'rgba(6,35,16,0.85)'; }
+});
+
+// Recommendation tool
+const cropData = {
+  wheat: { base:55, yield:32, rate:3200, roi:8500, products:['AgriNova GrowMax NPK','MicroShield Chelated','N-Boost Foliar'] },
+  paddy: { base:70, yield:28, rate:3800, roi:9200, products:['SoluNova WSF','BioActiv RootBoost','AgriNova GrowMax NPK'] },
+  cotton: { base:80, yield:35, rate:5500, roi:14000, products:['MicroShield Chelated','AgriNova GrowMax NPK','BioActiv RootBoost'] },
+  soybean: { base:45, yield:25, rate:2800, roi:6500, products:['AgriNova GrowMax NPK','TerraOrganic Gold'] },
+  sugarcane: { base:120, yield:38, rate:6000, roi:22000, products:['AgriNova GrowMax NPK','SoluNova WSF','BioActiv RootBoost'] },
+  tomato: { base:60, yield:42, rate:4200, roi:18000, products:['SoluNova WSF','SpeciaNova Horticulture','MicroShield Chelated'] },
+  chilli: { base:55, yield:38, rate:3800, roi:12000, products:['SoluNova WSF','MicroShield Chelated','BioActiv RootBoost'] },
+  grapes: { base:75, yield:45, rate:8500, roi:38000, products:['SpeciaNova Horticulture','SoluNova WSF','BioActiv RootBoost'] },
+  maize: { base:50, yield:30, rate:2600, roi:7000, products:['AgriNova GrowMax NPK','MicroShield Chelated'] },
+  groundnut: { base:48, yield:28, rate:2400, roi:6000, products:['AgriNova GrowMax NPK','MicroShield Chelated','TerraOrganic Gold'] }
+};
+
+function generateRecommendation() {
+  const crop = document.getElementById('rec-crop').value;
+  const soil = document.getElementById('rec-soil').value;
+  const size = parseFloat(document.getElementById('rec-size').value) || 5;
+  const stage = document.getElementById('rec-stage').value;
+  if (!crop || !soil || !stage) {
+    alert('Please select Crop, Soil Type, and Growth Stage to generate your recommendation.');
+    return;
+  }
+  const d = cropData[crop] || cropData.wheat;
+  const soilAdj = { black:1.05, red:0.95, alluvial:1.1, sandy:0.9, clay:1.0, loam:1.08 };
+  const stageAdj = { pre:0.4, veg:0.35, flower:0.15, fruit:0.1, post:0.05 };
+  const adj = (soilAdj[soil] || 1) * (stageAdj[stage] || 0.3);
+  const qty = Math.round(d.base * adj);
+  const totalCost = Math.round(d.rate * size * adj);
+  const extraRev = Math.round(d.roi * size * (soilAdj[soil]||1) * 0.7);
+  document.getElementById('res-qty').textContent = qty;
+  document.getElementById('res-yield').textContent = '+' + d.yield;
+  document.getElementById('res-cost').textContent = '₹' + totalCost.toLocaleString('en-IN');
+  document.getElementById('res-roi').textContent = '₹' + extraRev.toLocaleString('en-IN');
+  const cropNames = { wheat:'Wheat',paddy:'Paddy / Rice',cotton:'Cotton',soybean:'Soybean',sugarcane:'Sugarcane',tomato:'Tomato',chilli:'Chilli',grapes:'Grapes',maize:'Maize',groundnut:'Groundnut' };
+  document.getElementById('result-title').textContent = (cropNames[crop]||crop) + ' Precision Nutrition Program';
+  const pw = document.getElementById('rec-products-wrap');
+  pw.innerHTML = d.products.map(p => `<span class="rec-prod">${p}</span>`).join('');
+  const result = document.getElementById('tool-result');
+  result.classList.remove('active');
+  setTimeout(() => result.classList.add('active'), 50);
+}
+
+// Lead tabs
+function switchTab(el, type) {
+  document.querySelectorAll('.lead-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Animate progress bars on scroll
+const soilSection = document.getElementById('soil');
+let barsAnimated = false;
+const soilObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !barsAnimated) {
+    barsAnimated = true;
+    ['n-bar','p-bar','k-bar','oc-bar','ph-bar'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { const w = el.style.width; el.style.width = '0'; setTimeout(() => { el.style.width = w; }, 100); }
+    });
+  }
+}, { threshold: 0.3 });
+if (soilSection) soilObserver.observe(soilSection);
+</script>
+</body>
+</html>
